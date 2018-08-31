@@ -1,5 +1,17 @@
 <?php
-// TODO: Make singleton class... It's just handy to have. Copy from other framework
 class Singleton {
 
+    private function __construct()
+    {
+    }
+
+    public static function Instance()
+    {
+        static $inst = null;
+        if ($inst === null) {
+            $class = get_called_class();
+            $inst = new $class();
+        }
+        return $inst;
+    }
 }

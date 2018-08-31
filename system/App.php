@@ -3,11 +3,14 @@ class App {
 
     public function go()
     {
-        $GLOBALS['basepath'] = realpath("../");
+        define("BASEPATH", realpath("../"));
 
-        // TODO: Load autoloader
+        // Register autoloader
+        require BASEPATH."/system/Autoloader.php";
+        Autoloader::register();
+
         // TODO: Load error handler
-        // TODO: Load router
+        Router::Instance()->route();
     }
 
 }
